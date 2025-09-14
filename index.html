@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="description"
+        content="Embodied Navigation Foundation Model">
+    <!-- <meta name="keywords" content="VLN, VLA model, Foundation Model"> -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Embodied Navigation Foundation Model</title>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZYH3N96LN5"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-ZYH3N96LN5');
+    </script>
+
+    <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+    <link rel="stylesheet" href="./static/css/bulma.min.css">
+    <link rel="stylesheet" href="./static/css/slick.css">
+    <link rel="stylesheet" href="./static/css/slick-theme.css">
+    <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="stylesheet" href="./static/css/index.css">
+    <link rel="icon" href="./static/images/favicon.svg">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="./static/js/fontawesome.all.min.js"></script>
+    <script src="./static/js/slick.min.js"></script>
+    <script src="./static/js/index.js"></script>
+
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.css" />
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
+
+</head>
+
+<body>
+    <section class="hero">
+        <div class="hero-body">
+            <div class="container is-max-desktop">
+                <div class="columns is-centered">
+                    <div class="column has-text-centered">
+                        <h1 class="title is-2 publication-title">
+                            Embodied Navigation Foundation Model
+                        </h1>
+                        <div class="is-size-5 publication-authors">
+                            <span class="author-block">
+                                <a href="https://jzhzhang.github.io/">Jiazhao Zhang</a><sup>1, 2,</sup>*,</span> &nbsp;
+                            <span class="author-block">
+                                <a href="https://andyhandsom6.github.io/">Anqi Li</a><sup>1, 2,</sup>*,</span> &nbsp;
+                            <span class="author-block">
+                                <a href="https://github.com/moonsbird29/">Yunpeng Qi</a><sup>3,4,</sup>*,</span> &nbsp;
+                            <span class="author-block">
+                                <a href="https://github.com/lpercc">Minghan Li</a><sup>2,</sup>*,</span> &nbsp;
+                            
+                            <span class="author-block">
+                                <a href="https://github.com/2003jiahang">Jiahang Liu</a><sup>2</sup>,</span> &nbsp;
+
+                            <br>
+                            <span class="author-block">
+                                <a href="https://wsakobe.github.io/">Shaoan Wang</a><sup>1</sup>,</span> &nbsp;
+                            <span class="author-block">
+                                <a href="https://github.com/lhrrhl0419">Haoran Liu</a><sup>1, 2</sup>,</span> &nbsp;
+
+                            <span class="author-block">
+                                <a href="https://gengzezhou.github.io/">Gengze Zhou</a><sup>5</sup>,</span> &nbsp;
+
+
+                            <span class="author-block">
+                                <a href="https://scholar.google.com/citations?user=xYCz7sAAAAAJ&hl=en">Yuze Wu</a><sup>6</span>, &nbsp;
+                            <span class="author-block">
+                                <a href="https://github.com/LXX3123/">Xingxing Li</a><sup>6</span>, &nbsp;
+                            <span class="author-block">
+                                <a href="https://github.com/FYX-yang/">Yuxin Fan</a><sup>6</span>, &nbsp;
+
+                            <br>
+                            <span class="author-block">
+                                <a href=" https://github.com/Letheeek/">Wenjun Li</a><sup>6</span>, &nbsp;
+
+                            <span class="author-block">
+                                <a href="https://scholar.google.com/citations?user=1ayDJfsAAAAJ&hl=en">Zhibo Chen</a><sup>3</span>, &nbsp;
+
+                            <span class="author-block">
+                                <a href="https://feigao-robotics.com/">Fei Gao</a><sup>6,7</span>, &nbsp;
+
+                            <span class="author-block">
+                                <a href="http://qi-wu.me/">Qi Wu</a><sup>5</span>, &nbsp;
+
+                            <span class="author-block">
+                                <a href="https://scholar.google.com/citations?user=X7M0I8kAAAAJ&hl=en">Zhizheng Zhang</a><sup>2,†</sup></span> &nbsp;
+
+                            <span class="author-block">
+                                <a href="https://hughw19.github.io/">He Wang</a><sup>1, 2, †</sup></span>
+                        </div>
+
+                        <div class="is-size-5 publication-authors">
+                            <!-- <span class="author-block">Institution Name<br>Conference name and year</span> -->
+                            <span class="author-block">
+                              <sup>1</sup>Peking University&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                              <sup>2</sup>GalBot&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                              <sup>3</sup>USTC&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                              <sup>4</sup>BAAI&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                              <br>
+                              <sup>5</sup>University of Adelaide&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                              <sup>6</sup>Zhejiang University&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                              <sup>7</sup>Differential Robotics&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                            </span>
+                          </div>
+              
+                          <div class="is-size-5 publication-authors">
+                            *Joint First Author&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;†Equal Advising
+                          </div>
+
+                        <div class="column has-text-centered">
+                            <div class="publication-links">
+                                <span class="link-block">
+                                    <a href="http://arxiv.org/pdf/XXXX.XXXXX"
+                                        class="external-link button is-normal is-rounded is-dark" target="_blank" rel="noopener noreferrer">
+                                        <span class="icon">
+                                            <i class="fas fa-file-pdf"></i>
+                                        </span>
+                                        <span>Arxiv</span>
+                                    </a>
+                                </span>
+                                <!-- <span class="link-block">
+                                    <a href="https://github.com/xxxx/xxxx"
+                                        class="external-link button is-normal is-rounded is-dark" target="_blank" rel="noopener noreferrer">
+                                        <span class="icon">
+                                            <i class="fab fa-github"></i>
+                                        </span>
+                                        <span>Code & Benchmark</span>
+                                    </a>
+                                </span> -->
+                                <!-- <span class="link-block">
+                                    <a href="https://youtu.be/xxxx"
+                                        class="external-link button is-normal is-rounded is-dark" target="_blank" rel="noopener noreferrer">
+                                        <span class="icon">
+                                            <i class="fab fa-youtube"></i>
+                                        </span>
+                                        <span>Video</span>
+                                    </a>
+                                </span> -->
+                                <!-- <span class="link-block">
+                                    <a href="./static/NFM-1.bib"
+                                        class="external-link button is-normal is-rounded is-dark" target="_blank" rel="noopener noreferrer">
+                                        <span class="icon">
+                                            <i class="fas fa-quote-left"></i> </span>
+                                        <span>BibTex</span>
+                                    </a>
+                                </span> -->
+
+                            </div>
+
+                        </div>
+                        <!-- <div class="text" style="font-size: 20px;">
+                            <b>Conference on Robot Learning <i>(CoRL 2025)</i></b>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="hero teaser">
+        <div class="container is-max-desktop is-centered has-text-justified is-size-5">
+            <div class="hero-body">
+                <video id="teaser" disableRemotePlayback autoplay muted loop playsinline fetchpriority="high"
+                    poster="./static/images/teaser.png">
+                    <!-- <source src="./static/videos/teaser_new.mp4" type="video/mp4"> -->
+                </video>
+                <p>
+                    <strong><em>NFM-1</em></strong> is a cross-embodiment and corss-task navigation model trained on 8 million samples encompassing quadrupeds, drones, wheeled robots, and vehicles, spanning tasks including vision-and-language navigation, object searching, target tracking, and autonomous driving.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results Carousel--> 
+    <section class="hero is-light is-small">
+    <div class="hero-body">
+        <div class="container is-max-desktop ">
+        <!-- Swiper -->
+        <div id="results-carousel" class="carousel1  results-carousel">
+
+            <div class="item item1">
+                <video autoplay controls muted loop playsinline>
+                <source src="./static/videos/summary/vln1.mp4" type="video/mp4">
+                </video>
+            </div>
+
+            <div class="item item1">
+                <video autoplay controls muted loop playsinline>
+                <source src="./static/videos/summary/tracking1.mp4" type="video/mp4">
+                </video>
+            </div>
+
+            <div class="item item1">
+                <video autoplay controls muted loop playsinline>
+                <source src="./static/videos/summary/vln2.mp4" type="video/mp4">
+                </video>
+            </div>
+
+            <div class="item item1">
+                <video autoplay controls muted loop playsinline>
+                <source src="./static/videos/summary/tracking2.mp4" type="video/mp4">
+                </video>
+            </div>
+
+            <div class="item item1">
+                <video autoplay controls muted loop playsinline>
+                <source src="./static/videos/summary/uav.mp4" type="video/mp4">
+                </video>
+            </div>
+
+            <div class="item item1">
+                <video autoplay controls muted loop playsinline>
+                <source src="./static/videos/summary/galbot.mp4" type="video/mp4">
+                </video>
+            </div>
+
+            <div class="item item1">
+                <video autoplay controls muted loop playsinline>
+                <source src="./static/videos/summary/dog2humanoid.mp4" type="video/mp4">
+                </video>
+            </div>
+            
+            <div class="item item1">
+                <video autoplay controls muted loop playsinline>
+                <source src="./static/videos/summary/tracking4.mp4" type="video/mp4">
+                </video>
+            </div>
+
+        </div>
+        </div>
+    </div>
+    </section>
+
+
+
+    <section class="section">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered has-text-centered">
+                <div class="column">
+                    <h2 class="title is-3">NFM-1 Pipeline</h2>
+                    <div class="content has-text-justified">
+
+                        <center>
+                            <img src="./static/images/pipeline.jpg" alt="Pipeline Image" width="100%">
+                        </center>
+
+
+                        <p>
+                            Our method provides a unified framework for handling multiple tasks, including Image QA, Video QA, and Navigation. We organize text tokens and visual tokens using temporal-viewpoint indicator tokens. For question answering, our model employs a conventional language modeling head in an autoregressive manner, while for navigation, it uses a planning head to directly predict trajectories.
+                        </p>    
+                    </div>
+                </div>
+            </div>
+    </section>
+
+
+
+    <section class="section">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered has-text-centered">
+                <div class="column">
+                    <h2 class="title is-3">Real-world Deployment System</h2>
+                    <div class="content has-text-justified">
+
+                        <center>
+                            <img src="./static/images/real_world_deployment.png" alt="real_world Image" width="100%">
+                        </center>
+
+
+                        <p>
+                            we deploy our model on a remote server equipped with a GeForce RTX 5090 GPU and use the Internet for communication between the server and the client (which includes the controller and embodiments). Given a user instruction, the robots compress their current observations and transmit them to the server. The server then processes both the observations and the instruction to output a trajectory. This trajectory is subsequently processed by the local planner of each individual robot, which sends appropriate commands (\textit{e.g.}, velocity or joint controls) to drive the robot.
+                        </p>    
+                    </div>
+                </div>
+            </div>
+    </section>
+
+
+    <section class="hero is-light is-small">
+    <div class="hero-body">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered has-text-centered">
+                <h2 class="title is-3">Standard Test Cases(VLN)</h2>
+            </div>
+            <div class="std-videos-container">
+                <div class="item item-std1">
+                    <video poster="" id="std1" autoplay muted loop playsinline height="100%">
+                        <source src="./static/videos/std_cases/vln/clip_video_1.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="item item-std2">
+                    <video poster="" id="std2" autoplay muted loop playsinline height="100%">
+                        <source src="./static/videos/std_cases/vln/clip_video_2.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="item item-std3">
+                    <video poster="" id="std3" autoplay muted loop playsinline height="100%">
+                        <source src="./static/videos/std_cases/vln/clip_video_3.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="item item-std4">
+                    <video poster="" id="std4" autoplay muted loop playsinline height="100%">
+                        <source src="./static/videos/std_cases/vln/clip_video_4.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="item item-std5">
+                    <video poster="" id="std5" autoplay muted loop playsinline height="100%">
+                        <source src="./static/videos/std_cases/vln/clip_video_5.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+        </div>
+    </div>
+    </section>
+
+
+    <section class="hero is-light is-small">
+    <div class="hero-body">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered has-text-centered">
+                <h2 class="title is-3">Standard Test Cases(Tracking)</h2>
+            </div>
+            <div class="std-videos-container">
+                <div class="item item-std6">
+                    <video poster="" id="std1" autoplay muted loop playsinline height="100%">
+                        <source src="./static/videos/std_cases//tracking/clip_video_1.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="item item-std7">
+                    <video poster="" id="std7" autoplay muted loop playsinline height="100%">
+                        <source src="./static/videos/std_cases/tracking/clip_video_2.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="item item-std8">
+                    <video poster="" id="std8" autoplay muted loop playsinline height="100%">
+                        <source src="./static/videos/std_cases/tracking/clip_video_3.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="item item-std9">
+                    <video poster="" id="std9" autoplay muted loop playsinline height="100%">
+                        <source src="./static/videos/std_cases/tracking/clip_video_4.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="item item-std10">
+                    <video poster="" id="std10" autoplay muted loop playsinline height="100%">
+                        <source src="./static/videos/std_cases/tracking/clip_video_5.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+        </div>
+    </div>
+    </section>
+
+    <section class="hero is-light is-small">
+    <div class="hero-body">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered has-text-centered">
+                <h2 class="title is-3">Standard Test Cases(ObjNav)</h2>
+            </div>
+            <div class="std-videos-container">
+                <div class="item item-std11">
+                    <video poster="" id="std11" autoplay muted loop playsinline height="100%">
+                        <source src="./static/videos/std_cases/objnav/clip_video_1.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="item item-std12">
+                    <video poster="" id="std12" autoplay muted loop playsinline height="100%">
+                        <source src="./static/videos/std_cases/objnav/clip_video_2.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="item item-std13">
+                    <video poster="" id="std13" autoplay muted loop playsinline height="100%">
+                        <source src="./static/videos/std_cases/objnav/clip_video_3.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="item item-std14">
+                    <video poster="" id="std14" autoplay muted loop playsinline height="100%">
+                        <source src="./static/videos/std_cases/objnav/clip_video_4.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="item item-std15">
+                    <video poster="" id="std15" autoplay muted loop playsinline height="100%">
+                        <source src="./static/videos/std_cases/objnav/clip_video_5.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+        </div>
+    </div>
+    </section>
+    
+
+    <section class="hero is-small">
+        <div class="hero-body">
+            <h3 class="title is-3 is-centered has-text-centered">
+                <figure class="image is-128x128 is-inline-block" style="vertical-align: middle; margin-right: 0.5em;">
+                    <img src="static/robots_logo/four_camera_robot.png" alt="icon">
+                </figure>
+                <span style="vertical-align: middle;">VLN-CE RxR (Four Views)</span>
+            </h3>
+            <div class="container">
+                <div id="sub-results-carousel" class="carousel2 sub-results-carousel">
+                    <div class="item item1">
+                        <video poster="" id="item1" autoplay controls muted loop playsinline height="100%">
+                            <source src="./static/videos/sim_vln_4views/1013.mp4" type="video/mp4">
+                        </video>
+                    </div>
+
+                    <div class="item item1">
+                        <video poster="" id="item2" autoplay controls muted loop playsinline height="100%">
+                            <source src="./static/videos/sim_vln_4views/3122.mp4" type="video/mp4">
+                        </video>
+                    </div>
+
+                    <div class="item item1">
+                        <video poster="" id="item3" autoplay controls muted loop playsinline height="100%">
+                            <source src="./static/videos/sim_vln_4views/10206.mp4" type="video/mp4">
+                        </video>
+                    </div>
+
+                    <div class="item item1">
+                        <video poster="" id="item4" autoplay controls muted loop playsinline height="100%">
+                            <source src="./static/videos/sim_vln_4views/4176.mp4" type="video/mp4">
+                        </video>
+                    </div>
+
+                    <div class="item item1">
+                        <video poster="" id="item5" autoplay controls muted loop playsinline height="100%">
+                            <source src="./static/videos/sim_vln_4views/8273.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <section class="hero is-small">
+        <div class="hero-body">
+            <h3 class="title is-3 is-centered has-text-centered">
+                <figure class="image is-128x128 is-inline-block" style="vertical-align: middle; margin-right: 0.5em;">
+                    <img src="static/robots_logo/single_camera_robot.png" alt="icon">
+                </figure>
+                <span style="vertical-align: middle;">VLN-CE RxR (Single Front View)</span>
+            </h3>
+            <div class="container">
+                <div id="sub-results-carousel" class="carousel2 sub-results-carousel">
+
+                    <div class="item item2">
+                        <video autoplay controls muted loop playsinline>
+                        <source src="./static/videos/sim_vln_1view/7771.mp4" type="video/mp4">
+                        </video>
+                    </div>
+
+                    <div class="item item2">
+                        <video autoplay controls muted loop playsinline>
+                        <source src="./static/videos/sim_vln_1view/10237.mp4" type="video/mp4">
+                        </video>
+                    </div>
+
+                    <div class="item item2">
+                        <video autoplay controls muted loop playsinline>
+                        <source src="./static/videos/sim_vln_1view/1074.mp4" type="video/mp4">
+                        </video>
+                    </div>
+
+                    <div class="item item2">
+                        <video autoplay controls muted loop playsinline>
+                        <source src="./static/videos/sim_vln_1view/3122.mp4" type="video/mp4">
+                        </video>
+                    </div>
+
+                    <div class="item item2">
+                        <video autoplay controls muted loop playsinline>
+                        <source src="./static/videos/sim_vln_1view/8532.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="hero is-small">
+    <div class="hero-body">
+        <h3 class="title is-3 is-centered has-text-centered">
+            <figure class="image is-128x128 is-inline-block" style="vertical-align: middle; margin-right: 0.5em;">
+                <img src="static/robots_logo/four_camera_robot.png" alt="icon">
+            </figure>
+            <span style="vertical-align: middle;">Tracking EVT-Bench Distracted Target (Four Views)</span>
+        </h3>
+        <div class="container">
+            <div id="sub-results-carousel1" class="carousel sub-results-carousel1">
+
+                <div class="item item1">
+                    <video autoplay muted loop playsinline>
+                    <source src="./static/videos/sim_tracking_4views/11.mp4" type="video/mp4">
+                    </video>
+                </div>
+
+                <div class="item item1">
+                    <video autoplay muted loop playsinline>
+                    <source src="./static/videos/sim_tracking_4views/15.mp4" type="video/mp4">
+                    </video>
+                </div>
+
+                <div class="item item1">
+                    <video autoplay muted loop playsinline>
+                    <source src="./static/videos/sim_tracking_4views/16.mp4" type="video/mp4">
+                    </video>
+                </div>
+
+                <div class="item item1">
+                    <video autoplay muted loop playsinline>
+                    <source src="./static/videos/sim_tracking_4views/21.mp4" type="video/mp4">
+                    </video>
+                </div>
+
+                <div class="item item1">
+                    <video autoplay muted loop playsinline>
+                    <source src="./static/videos/sim_tracking_4views/22.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+        </div>
+    </div>
+    </section>
+
+    <!-- <section class="hero is-light is-small">
+    <div class="hero-body">
+        <div class="columns is-centered has-text-centered">
+            <h2 class="title is-3 ">Tracking Single Views</h2>
+        </div>
+        <div class="container">
+        <div id="sub-results-carousel" class="carousel sub-results-carousel">
+
+                <div class="item item1">
+                    <video autoplay controls muted loop playsinline>
+                    <source src="./static/videos/sim_tracking_1view/0.mp4" type="video/mp4">
+                    </video>
+                </div>
+
+                <div class="item item1">
+                    <video autoplay controls muted loop playsinline>
+                    <source src="./static/videos/sim_tracking_1view/5.mp4" type="video/mp4">
+                    </video>
+                </div>
+
+                <div class="item item1">
+                    <video autoplay controls muted loop playsinline>
+                    <source src="./static/videos/sim_tracking_1view/15.mp4" type="video/mp4">
+                    </video>
+                </div>
+
+                <div class="item item1">
+                    <video autoplay controls muted loop playsinline>
+                    <source src="./static/videos/sim_tracking_1view/20.mp4" type="video/mp4">
+                    </video>
+                </div>
+
+                <div class="item item1">
+                    <video autoplay controls muted loop playsinline>
+                    <source src="./static/videos/sim_tracking_1view/23.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+        </div>
+    </div>
+    </section> -->
+
+    <section class="hero is-small">
+    <div class="hero-body">
+        <h3 class="title is-3 is-centered has-text-centered">
+            <figure class="image is-128x128 is-inline-block" style="vertical-align: middle; margin-right: 0.5em;">
+                <img src="static/robots_logo/four_camera_robot.png" alt="icon">
+            </figure>
+            <span style="vertical-align: middle;">ObjNav HM3D-OVON (Four Views)</span>
+        </h3>
+        <div class="container">
+            <div id="sub-results-carousel1" class="carousel sub-results-carousel1">
+                <div class="item item1">
+                    <video autoplay controls muted loop playsinline>
+                    <source src="./static/videos/sim_objnav_4views/4.mp4" type="video/mp4">
+                    </video>
+                </div>
+
+                <div class="item item1">
+                    <video autoplay controls muted loop playsinline>
+                    <source src="./static/videos/sim_objnav_4views/5.mp4" type="video/mp4">
+                    </video>
+                </div>
+
+                <div class="item item1">
+                    <video autoplay controls muted loop playsinline>
+                    <source src="./static/videos/sim_objnav_4views/7.mp4" type="video/mp4">
+                    </video>
+                </div>
+
+                <div class="item item1">
+                    <video autoplay controls muted loop playsinline>
+                    <source src="./static/videos/sim_objnav_4views/16.mp4" type="video/mp4">
+                    </video>
+                </div>
+
+                <div class="item item1">
+                    <video autoplay controls muted loop playsinline>
+                    <source src="./static/videos/sim_objnav_4views/25.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+        </div>
+    </div>
+    </section>
+
+
+    <section class="hero is-small">
+    <div class="hero-body">
+        <h3 class="title is-3 is-centered has-text-centered">
+            <figure class="image is-128x128 is-inline-block" style="vertical-align: middle; margin-right: 0.5em;">
+                <img src="static/robots_logo/four_camera_uav.png" alt="icon">
+            </figure>
+            <span style="vertical-align: middle;">VLN OpenUAV (Four Views)</span>
+        </h3>
+        <div class="container">
+        <div id="sub-results-carousel1" class="carousel sub-results-carousel1">
+
+                <div class="item item1">
+                    <video  autoplay controls muted loop playsinline>
+                    <source src="./static/videos/sim_openuav_4views/3.mp4" type="video/mp4">
+                    </video>
+                </div>
+
+                <div class="item item1">
+                    <video  autoplay controls muted loop playsinline>
+                    <source src="./static/videos/sim_openuav_4views/2.mp4" type="video/mp4">
+                    </video>
+                </div>
+
+                <div class="item item1">
+                    <video  autoplay controls muted loop playsinline>
+                    <source src="./static/videos/sim_openuav_4views/1.mp4" type="video/mp4">
+                    </video>
+                </div>
+
+                <div class="item item1">
+                    <video  autoplay controls muted loop playsinline>
+                    <source src="./static/videos/sim_openuav_4views/4.mp4" type="video/mp4">
+                    </video>
+                </div>
+
+                <div class="item item1">
+                    <video  autoplay controls muted loop playsinline>
+                    <source src="./static/videos/sim_openuav_4views/5.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+        </div>
+    </div>
+    </section>
+
+
+    <section class="hero is-small">
+    <div class="hero-body">
+        <h3 class="title is-3 is-centered has-text-centered">
+            <figure class="image is-128x128 is-inline-block" style="vertical-align: middle; margin-right: 0.5em;">
+                <img src="static/robots_logo/six_camera_car.png" alt="icon">
+            </figure>
+            <span style="vertical-align: middle;">Autonomus Driving (nuScenes, Six Views)</span>
+        </h3>
+        <div class="container">
+        <div id="sub-results-carousel1" class="carousel sub-results-carousel1">
+
+                <div class="item item1">
+                    <video autoplay controls muted loop playsinline>
+                    <source src="./static/videos/sim_nuScenes_6view/1.mp4" type="video/mp4">
+                    </video>
+                </div>
+
+                <div class="item item1">
+                    <video autoplay controls muted loop playsinline>
+                    <source src="./static/videos/sim_nuScenes_6view/2.mp4" type="video/mp4">
+                    </video>
+                </div>
+
+                <div class="item item1">
+                    <video autoplay controls muted loop playsinline>
+                    <source src="./static/videos/sim_nuScenes_6view/3.mp4" type="video/mp4">
+                    </video>
+                </div>
+
+                <div class="item item1">
+                    <video autoplay controls muted loop playsinline>
+                    <source src="./static/videos/sim_nuScenes_6view/4.mp4" type="video/mp4">
+                    </video>
+                </div>
+
+                <div class="item item1">
+                    <video autoplay controls muted loop playsinline>
+                    <source src="./static/videos/sim_nuScenes_6view/5.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+        </div>
+    </div>
+    </section>
+
+    <section class="hero is-small">
+    <div class="hero-body">
+
+        <h3 class="title is-3 is-centered has-text-centered">
+            <figure class="image is-128x128 is-inline-block" style="vertical-align: middle; margin-right: 0.5em;">
+                <img src="static/robots_logo/eight_camera_car.png" alt="icon">
+            </figure>
+            <span style="vertical-align: middle;">Autonomus Driving (openScenes, Eight Views)</span>
+        </h3>
+        <div class="container">
+        <div id="sub-results-carousel" class="carousel2 sub-results-carousel">
+                <div class="item item1">
+                    <video autoplay controls muted loop playsinline>
+                    <source src="./static/videos/sim_openscene_8views/1.mp4" type="video/mp4">
+                    </video>
+                </div>
+
+                <div class="item item1">
+                    <video autoplay controls muted loop playsinline>
+                    <source src="./static/videos/sim_openscene_8views/2.mp4" type="video/mp4">
+                    </video>
+                </div>
+
+                <div class="item item1">
+                    <video autoplay controls muted loop playsinline>
+                    <source src="./static/videos/sim_openscene_8views/3.mp4" type="video/mp4">
+                    </video>
+                </div>
+
+                <div class="item item1">
+                    <video autoplay controls muted loop playsinline>
+                    <source src="./static/videos/sim_openscene_8views/4.mp4" type="video/mp4">
+                    </video>
+                </div>
+
+                <div class="item item1">
+                    <video autoplay controls muted loop playsinline>
+                    <source src="./static/videos/sim_openscene_8views/5.mp4" type="video/mp4">
+                    </video>
+                </div>
+            </div>
+        </div>
+    </div>
+    </section>
+
+
+
+    <section class="section">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered has-text-left">
+                <div class="column">
+                    <h2 class="title is-3">Acknowleagemnt</h2>
+                    <div class="content has-text-left">
+                        <p>
+                            We sincerely thank Jianmin Wang and Wenhao Li for their support with the hardware setup. We also thank Chen Gao, Zhiyong Wang, Zhichao Hang, and Donglin Yang for their support with the experiments.
+                        </p>    
+                    </div>
+                </div>
+            </div>
+    </section>
+
+
+
+    <!-- <section class="section">
+        <div class="container is-max-desktop"> -->
+            <!-- Abstract. -->
+            <!-- <div class="columns is-centered has-text-centered">
+                <div class="column is-four-fifths">
+                    <h2 class="title is-3">Abstract</h2>
+                    <div class="content has-text-justified">
+                        <p>
+                            Navigation is a fundamental capability in embodied AI, representing the intelligence required to perceive and interact within physical environments through the integration of vision and language instruction. Despite significant progress in large-scale Vision Language Models (VLMs), which exhibit remarkable zero-shot generalization, however embodied navigation remains largely confined to narrow task settings and embodiment-specific architectures.
+In this work, we propose the the attempt to build the navigation foundation model, a cross-embodiment and corss-task navigation model trained on 8 million samples encompassing quadrupeds, drones, wheeled robots, and vehicles, spanning tasks including vision-and-language navigation, object searching, target tracking, and autonomous driving. All task along across embodiements share unified architecture that processes multi-modal inputs (visual observations, instructions, and action sequences). This is achived by using temporal-viewpoint indicator tokens to enable a unfied training manner  of varying camera configurations. Moreover, we devise a token budget-aware sampling strategy to efficiently model navigation history while maintaining stable inference speeds. Extensive evaluations on public benchmarks demonstrate that our model achieves state-of-the-art or highly competitive performance across multiple navigation tasks and embodiment types without requiring task-specific fine-tuning. Additional real-world experiments further confirm the strong generalization capability and practical applicability of our approach.
+                        </p>
+                    </div>
+                </div>
+            </div> -->
+
+            <!--/ Abstract. -->
+
+            <!-- Paper video. -->
+            <!-- <div class="columns is-centered has-text-centered">
+                <div class="column is-four-fifths">
+                    <h2 class="title is-3">Summary Video</h2>
+                     <div class="publication-video">
+                        <iframe src="https://www.youtube.com/embed/v51U3Nk-SK4?rel=0&amp;showinfo=0" frameborder="0"
+                            allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                    </div> -->
+                <!-- </div>
+            </div>
+        </div>
+    </section>  -->
+
+    <!-- <section class="section">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered has-text-centered">
+                <div class="column">
+                    <h2 class="title is-3">NFM-1 Pipeline</h2>
+                    <div class="content has-text-justified">
+                        <p>
+                            Our method provides a unified framework for handling multiple tasks, including Image QA, Video QA, and Navigation. We organize text tokens and visual tokens using temporal-viewpoint indicator tokens. For question answering, our model employs a conventional language modeling head in an autoregressive manner, while for navigation, it uses a planning head to directly predict trajectories.
+                        <center>
+                            <img src="./static/videos/pipeline.jpg" alt="Pipeline Image" width="80%">
+                        </center>
+                    </div>
+                </div>
+            </div>
+            <div class="columns is-centered has-text-centered">
+                <div class="column">
+                    <h2 class="title is-3">Dataset</h2>
+                    <div class="content has-text-justified">
+                       <p>
+                            To train our parallel-branch TrackVLA, we collect a total of 1.7M newly collected samples, including embodied visual tracking and video-based question-answering data.
+                        </p>
+                        <center>
+                            <img src="./static/videos/dataset.png" alt="Pipeline Image" width="80%">
+                        </center> -->
+                    <!-- </div>
+                </div>
+            </div> -->
+            <!-- <div class="column is-centered has-text-centered">
+                <h2 class="title is-3">Long-horizon Tracking</h2>
+                <div class="content has-text-justified">
+                    <p>
+                        TrackVLA is capable of long-horizon tracking in diverse and dynamic environments. It can effectively track targets over long distances while remaining robust against distractors.
+                    </p>
+                    <center>
+                        <video poster="" id="indoors-main" autoplay controls muted loop playsinline width="80%">
+                            <source src="./static/videos/long_horizon.mp4" type="video/mp4">
+                        </video>
+                    </center>
+                </div>
+            </div> -->
+    <!-- </section>  -->
+
+
+    <!-- <section class="section">
+        <div class="container is-max-desktop is-centered">
+            <center>
+                <h2 class="title is-3">Comparison with Commercial Tracking UAV</h2>
+            </center>
+            <br>
+            <div class="content has-text-justified">
+                <p>
+                    We conducted a series of experiments to compare the tracking performance of TrackVLA with that of a state-of-the-art commercial tracking UAV based on a modular approach. As shown in the video, TrackVLA performs better in challenging scenarios such as target occlusion and fast motion, thanks to its powerful target reasoning capabilities.
+                </p>
+                <center>
+                    <video poster="" id="go1-inside-2-main" autoplay controls muted loop playsinline width="80%">
+                        <source src="./static/videos/comparison.mp4" type="video/mp4">
+                    </video>
+                </center>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container is-max-desktop is-centered">
+            <center>
+                <h2 class="title is-3">Environmental Reasoning</h2>
+            </center>
+            <br>
+            <div class="content has-text-justified">
+                <p>
+                    TrackVLA is capable of reasoning about the environment, enabling it to autonomously recognize traversable areas, avoid obstacles, and generalize to fast-motion and low-illumination scenarios without requiring additional training data.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <section class="hero is-light is-small">
+        <div class="hero-body">
+            <div class="container">
+                <div id="results-carousel" class="carousel results-carousel">
+                    <div class="item item-robust">
+                        <video poster="" id="robust" autoplay controls muted loop playsinline height="100%">
+                            <source src="./static/videos/robust_tracking.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="item item-pursuit">
+                        <video poster="" id="pursuit" autoplay controls muted loop playsinline height="100%">
+                            <source src="./static/videos/pursuit.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <div class="item item-dark">
+                        <video poster="" id="dark" autoplay controls muted loop playsinline height="100%">
+                            <source src="./static/videos/dark.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container is-max-desktop is-centered">
+            <center>
+                <h2 class="title is-3">Cross-domain Generalization</h2>
+            </center>
+            <br>
+            <div class="content has-text-justified">
+                <p>
+                    TrackVLA is capable of cross-domain generalization, enabling robust tracking across diverse scene styles, viewpoints, and camera parameters without additional adaptation.
+                </p>
+                <center>
+                    <video poster="" id="go1-inside-2-main" autoplay controls muted loop playsinline width="80%">
+                        <source src="./static/videos/passive.mp4" type="video/mp4">
+                    </video>
+                </center>
+            </div>
+        </div>
+    </section> -->
+
+    <!-- <section class="section" id="BibTeX">
+        <div class="container is-max-desktop content">
+            <h2 class="title">BibTeX</h2>
+            <pre><code>@article{zhang2025NFM,
+    author  = {xxxx},
+    title   = {Embodied Navigation Foundation Model},
+    journal = {arXiv pre-print},
+    year    = {2025},
+    url     = {http://arxiv.org/abs/XXXX}
+}</code></pre>
+        </div>
+    </section> -->
+
+    <br>
+    <center class="is-size-10">
+      The website (<a href="https://github.com/wsakobe/TrackVLA-web">source code</a>) design was adapted from <a href="https://nerfies.github.io" class="external-link"><span
+                class="dnerf">Nerfies</span></a>.
+    </center>
+    <br>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const swiper1 = new Swiper('.swiper1', {
+        slidesPerView: 3,
+        spaceBetween: 20,
+        loop: true,
+        autoplay: {
+          delay: 2000,
+          disableOnInteraction: false,
+          pauseOnMouseEnter: true
+        },
+        navigation: false,
+        pagination: false,
+      });
+    });
+  </script>
+
+</body>
+
+</html>
+
+<script>
+  const swiper = new Swiper('.swiper', {
+    slidesPerView: 4,
+    spaceBetween: 10,
+    loop: true,
+    autoplay: {
+      delay: 2000,
+      disableOnInteraction: false,
+      pauseOnMouseEnter: true
+    },
+    navigation: {
+    //   nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev'
+    },
+    navigation: {
+      nextEl: '.swiper-button-next',
+    //   prevEl: '.swiper-button-prev'
+    },
+    pagination: false,
+  });
+</script>
