@@ -21,8 +21,8 @@ $(document).ready(function () {
       { breakpoint: 500, settings: { slidesToShow: 1 } }
     ]
   };
-
-  $('.sub-results-carousel1').each(function() {
+  
+  $('.sub-results-carousel').each(function() {
     const $wrap = $(this);
     $wrap.slick(options);
 
@@ -53,7 +53,7 @@ $(document).ready(function () {
     // 强制触发 init，把第一帧当作一次切换来走逻辑
     $wrap.slick('slickGoTo', 0);
   });
-
+  $('.carousel').slick(options);
 })
 
 
@@ -130,7 +130,7 @@ $(document).ready(function () {
   // carousel initialization
   const options = {
     slidesToScroll: 1,
-    slidesToShow: 1,
+    slidesToShow: 4,
     loop: true,
     infinite: true,
     autoplay: false,

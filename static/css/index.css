@@ -192,22 +192,21 @@ body {
 .sub-results-carousel .item {
     margin: 5px;
     overflow: hidden;
-    /* border: 1px solid #bbb;
-    border-radius: 10px; */
-    /* padding: 0; */
-    /* font-size: 0; Ensure no text affects the layout */
+    border: 1px solid #bbb;
+    border-radius: 10px;
+    padding: 0;
+    font-size: 0;
     display: flex;
     justify-content: center; /* Horizontally center the content inside each item */
     align-items: center; /* Vertically center the content inside each item */
-    background-color: transparent; /* 确保背景透明 */
+    background-color: #000;
 }
 
 .sub-results-carousel .item video {
-  /* height: 700px;  */
+  height: 400px; 
   width: auto; 
-  object-fit: contain; 
-  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
-  /* border: 1px solid #bbb;
+  /* box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
+  border: 1px solid #bbb;
   border-radius: 10px; */
 }
 /* 对非中心项目应用立体效果、折叠和缩小 */
@@ -215,7 +214,7 @@ body {
     width: 50%; /* 让非中心幻灯片占用一半的宽度 */
     transform: scale(0.7) rotateY(20deg) translateZ(-60px); /* 3D旋转与缩放，添加深度 */
     transition: transform 1s ease, width 1s ease, box-shadow 0.5s ease; /* 平滑过渡效果 */
-    /* box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.2), 0px 15px 20px rgba(0, 0, 0, 0.15); 为非中心项添加立体阴影 */
+    box-shadow: 0px 15px 30px rgba(0, 0, 0, 0.2), 0px 15px 20px rgba(0, 0, 0, 0.15);
     opacity: 0.3; /* 调整透明度，使其不那么显眼 */
 }
 
@@ -225,7 +224,7 @@ body {
     width: 100%; /* 恢复居中项目为全宽 */
     transform: scale(1) rotateY(0deg) translateZ(0px); /* 恢复正常大小并去除旋转 */
     opacity: 1;
-    /* box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2); 给中心项添加光晕效果 */
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
     transition: transform 1s ease, width 1s ease, box-shadow 0.5s ease, opacity 0.3s ease; /* 平滑过渡效果 */
 }
 
