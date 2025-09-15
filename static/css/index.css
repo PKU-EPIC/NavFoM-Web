@@ -162,9 +162,8 @@ body {
 }
 
 .results-carousel {
-  width: 150%;
+  width: 100%;
   margin: 0 auto;
-  left: -25%;
 }
 
 /* Style each carousel item */
@@ -238,9 +237,9 @@ body {
 }
 
 .sub-results-carousel1 {
-  width: 150%;
+  width: 100%;
   margin: 0 auto;
-  left: -25%;
+  /* left: -25%; */
   perspective: 1500px; /* 添加透视效果 */
   position: relative;
   height: 700px;
@@ -294,29 +293,6 @@ body {
     transition: transform 0.3s ease; /* 平滑过渡效果 */
 }
 
-/* 增大左侧滑动按钮（上一个按钮） */
-.slick-prev {
-  font-size: 30px; /* 增大按钮字体大小 */
-  padding: 10px;   /* 增大按钮的内边距 */
-  border: none;    /* 移除默认的边框 */
-  background-color: transparent; /* 设置透明背景 */
-  left: -4%;
-}
-
-.slick-next {
-  font-size: 30px; /* 增大按钮字体大小 */
-  padding: 10px;   /* 增大按钮的内边距 */
-  border: none;    /* 移除默认的边框 */
-  background-color: transparent; /* 设置透明背景 */
-  right: -1%;
-}
-
-/* 增大按钮的背景和外观 */
-.slick-prev:before, .slick-next:before {
-  font-size: 40px; /* 增大按钮箭头图标的字体大小 */
-  color: #000; /* 设置箭头颜色 */
-}
-
 
 .videos-flex {
   display: flex;
@@ -337,10 +313,9 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 130%;
+    width: 100%;
     margin: 0 auto;
     position: relative;
-    left: -15%;  /* This shifts the container to the left by 10%, effectively centering it */
 }
 
 .std-videos-container .item {
