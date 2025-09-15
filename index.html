@@ -127,7 +127,7 @@
                                     <a href="http://arxiv.org/pdf/XXXX.XXXXX"
                                         class="external-link button is-normal is-rounded is-dark" target="_blank" rel="noopener noreferrer">
                                         <span class="icon">
-                                            <i class="fas fa-file-pdf"></i>
+                                            <i class="ai ai-arxiv"></i>
                                         </span>
                                         <span>Arxiv</span>
                                     </a>
@@ -151,7 +151,7 @@
                                     </a>
                                 </span> -->
                                 <!-- <span class="link-block">
-                                    <a href="./static/NFM-1.bib"
+                                    <a href="./static/NavFoM.bib"
                                         class="external-link button is-normal is-rounded is-dark" target="_blank" rel="noopener noreferrer">
                                         <span class="icon">
                                             <i class="fas fa-quote-left"></i> </span>
@@ -174,13 +174,11 @@
     <section class="hero teaser">
         <div class="container is-max-desktop is-centered has-text-justified is-size-5">
             <div class="hero-body">
-                <video id="teaser" disableRemotePlayback autoplay muted loop playsinline fetchpriority="high"
-                    poster="./static/images/teaser.png">
-                    <!-- <source src="./static/videos/teaser_new.mp4" type="video/mp4"> -->
-                </video>
+                <img src="./static/images/teaser1.png" alt="teaser Image" width="100%">
                 <p>
-                    <strong><em>NFM-1</em></strong> is a cross-embodiment and corss-task navigation model trained on 8 million samples encompassing quadrupeds, drones, wheeled robots, and vehicles, spanning tasks including vision-and-language navigation, object searching, target tracking, and autonomous driving.
+                    <em class="highlight-center">NavFoM is a cross-embodiment and cross-task navigation model </em> trained on 8 million samples encompassing quadrupeds, drones, wheeled robots, and vehicles, spanning tasks including vision-and-language navigation, object searching, target tracking, and autonomous driving.
                 </p>
+                    
             </div>
         </div>
     </section>
@@ -251,7 +249,7 @@
         <div class="container is-max-desktop">
             <div class="columns is-centered has-text-centered">
                 <div class="column">
-                    <h2 class="title is-3">NFM-1 Pipeline</h2>
+                    <h2 class="title is-3">NavFoM Pipeline</h2>
                     <div class="content has-text-justified">
 
                         <center>
@@ -267,28 +265,24 @@
             </div>
     </section>
 
-
-
     <section class="section">
         <div class="container is-max-desktop">
             <div class="columns is-centered has-text-centered">
                 <div class="column">
-                    <h2 class="title is-3">Real-world Deployment System</h2>
+                    <h2 class="title is-3">NavFoM Forwarding for Navigation Tasks</h2>
                     <div class="content has-text-justified">
 
                         <center>
-                            <img src="./static/images/real_world_deployment.png" alt="real_world Image" width="100%">
+                            <img src="./static/images/forwarding.png" alt="Pipeline Image" width="90%">
                         </center>
 
-
                         <p>
-                            we deploy our model on a remote server equipped with a GeForce RTX 5090 GPU and use the Internet for communication between the server and the client (which includes the controller and embodiments). Given a user instruction, the robots compress their current observations and transmit them to the server. The server then processes both the observations and the instruction to output a trajectory. This trajectory is subsequently processed by the local planner of each individual robot, which sends appropriate commands (\textit{e.g.}, velocity or joint controls) to drive the robot.
+                            For navigation, (a) our approach utilizes both coarse-grained and fine-grained visual tokens. (b) The navigation history is efficiently sampled under a fixed token budget using our Budget-Aware Temporal Sampling (BATS) method. (c) To distinguish historical information from different timesteps and viewpoints, we employ Temporal-Viewpoint Indicator (TVI) tokens, which encode both temporal and angular information.
                         </p>    
                     </div>
                 </div>
             </div>
     </section>
-
 
     <section class="hero is-light is-small">
     <div class="hero-body">
@@ -677,7 +671,7 @@
             <figure class="image is-128x128 is-inline-block" style="vertical-align: middle; margin-right: 0.5em;">
                 <img src="static/robots_logo/six_camera_car.png" alt="icon">
             </figure>
-            <span style="vertical-align: middle;">Autonomus Driving (nuScenes, Six Views)</span>
+            <span style="vertical-align: middle;">Autonomus Driving nuScenes (Six Views)</span>
         </h3>
         <div class="container">
         <div id="sub-results-carousel" class="carousel sub-results-carousel">
@@ -723,7 +717,7 @@
             <figure class="image is-128x128 is-inline-block" style="vertical-align: middle; margin-right: 0.5em;">
                 <img src="static/robots_logo/eight_camera_car.png" alt="icon">
             </figure>
-            <span style="vertical-align: middle;">Autonomus Driving (openScenes, Eight Views)</span>
+            <span style="vertical-align: middle;">Autonomus Driving openScenes (Eight Views)</span>
         </h3>
         <div class="container">
         <div id="sub-results-carousel" class="carousel sub-results-carousel">
@@ -759,6 +753,26 @@
             </div>
         </div>
     </div>
+    </section>
+
+    <section class="section">
+        <div class="container is-max-desktop">
+            <div class="columns is-centered has-text-centered">
+                <div class="column">
+                    <h2 class="title is-3">Real-world Deployment System</h2>
+                    <div class="content has-text-justified">
+
+                        <center>
+                            <img src="./static/images/real_world_deployment.png" alt="real_world Image" width="100%">
+                        </center>
+
+
+                        <p>
+                            we deploy our model on a remote server equipped with a GeForce RTX 5090 GPU and use the Internet for communication between the server and the client (which includes the controller and embodiments). Given a user instruction, the robots compress their current observations and transmit them to the server. The server then processes both the observations and the instruction to output a trajectory. This trajectory is subsequently processed by the local planner of each individual robot, which sends appropriate commands (\textit{e.g.}, velocity or joint controls) to drive the robot.
+                        </p>    
+                    </div>
+                </div>
+            </div>
     </section>
 
 
@@ -813,7 +827,7 @@ In this work, we propose the the attempt to build the navigation foundation mode
         <div class="container is-max-desktop">
             <div class="columns is-centered has-text-centered">
                 <div class="column">
-                    <h2 class="title is-3">NFM-1 Pipeline</h2>
+                    <h2 class="title is-3">NavFoM Pipeline</h2>
                     <div class="content has-text-justified">
                         <p>
                             Our method provides a unified framework for handling multiple tasks, including Image QA, Video QA, and Navigation. We organize text tokens and visual tokens using temporal-viewpoint indicator tokens. For question answering, our model employs a conventional language modeling head in an autoregressive manner, while for navigation, it uses a planning head to directly predict trajectories.
@@ -941,12 +955,12 @@ In this work, we propose the the attempt to build the navigation foundation mode
         </div>
     </section> -->
 
-    <br>
+    <!-- <br>
     <center class="is-size-10">
       The website (<a href="https://github.com/wsakobe/TrackVLA-web">source code</a>) design was adapted from <a href="https://nerfies.github.io" class="external-link"><span
                 class="dnerf">Nerfies</span></a>.
     </center>
-    <br>
+    <br> -->
 
   <script>
     document.addEventListener('DOMContentLoaded', function() {

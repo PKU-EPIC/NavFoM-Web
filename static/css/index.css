@@ -363,3 +363,32 @@ figure.image img {
   height: 100%; /* 设置 img 的高度为 figure 的 100% */
   width: auto; /* 宽度自适应 */
 }
+
+/* .highlight-center {
+  text-align: center;
+  font-weight: bold;
+  font-size: 25px;
+  background: #fffae6;
+  padding: 6px;
+  border-radius: 6px;
+} */
+
+.highlight-center {
+  text-align: left;
+  font-weight: bold;
+  font-size: 25px;
+  background: #fffae6;
+  padding: 6px;
+  border-radius: 6px;
+  background-clip: text;
+  color: transparent;
+  background-image: linear-gradient(90deg, #ff6b6b, #feca57, #48dbfb, #1dd1a1, #48dbfb, #feca57,  #ff6b6b);
+  background-size: 300% 100%;
+  animation: gradientMove 5s infinite linear;
+}
+
+@keyframes gradientMove {
+  0%   { background-position: 100% 0%; }
+  /* 50%   { background-position: 50% 100%; } */
+  100% { background-position: 0% 100%; }
+}
